@@ -698,6 +698,107 @@ opacity: 1;
 </style>
 </head>
 <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+	<style>
+.popup {
+ display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  border-radius: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  max-width: 100%;
+  height: 250px;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.popup.active {
+  display: flex;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.popup .popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.popup input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.popup .button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.popup button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #60c0ce;
+  color: #fff;
+  cursor: pointer;
+}
+  </style>
+	<div id="popup" class="popup">
+  <span class="close" onclick="closePopup()">&times;</span>
+  
+  <div class="popup-content">
+    <p style="color: white;">1.为防止有人恶意偷取版本以及扩散版本
+<br>
+2.所以只会在购买卡密后提供下载密码</p>
+    <input type="password" id="passwordInput" placeholder="输入密码">
+    <div class="button-row">
+      <button onclick="checkPassword(1)">点我下载版本</button>
+     
+    </div>
+  </div>
+</div>
+	 <script>
+  function openPopup() {
+  document.getElementById("popup").classList.add("active");
+}
+
+function closePopup() {
+  document.getElementById("popup").classList.remove("active");
+}
+
+function checkPassword(buttonNumber) {
+  var passwordInput = document.getElementById("passwordInput");
+  var password = "123"; // 设置密码为 "password"
+  
+  if (passwordInput.value === password) {
+    switch (buttonNumber) {
+      case 1:
+        // 按钮1的点击事件
+     window.open('http://www.baidu.com') 
+        break;
+      
+    }
+  }else{
+      alert("密码错误");
+    }
+}
+  </script>
 <noscript>
 You need to enable JavaScript to run this app.
 </noscript>
@@ -714,7 +815,7 @@ You need to enable JavaScript to run this app.
 				  <span class="typist-cursor  highlight highlight-success d-inline-block" style="opacity: 0; visibility: visible; animation: 700ms ease 0ms infinite normal none running blink;">|</span>
 				  </span></h1>
               <p class="fs-18 text-muted pt-3">由专业团队设计和开发的高品质辅助类工具，让您的游戏操作脱颖而出。</p>
-              <div class="pt-3 pt-sm-5 mb-4 mb-lg-0"><a href="https://baidu.com" class="btn btn-secondary me-2" data-toggle="smooth-scroll" target="_blank">立即下载 </a><a href="http://www.baidu.com/" class="btn btn-danger me-2" data-toggle="smooth-scroll" target="_blank">视频教程 </a> </div>
+              <div class="pt-3 pt-sm-5 mb-4 mb-lg-0"><a onclick="openPopup()" class="btn btn-secondary me-2" data-toggle="smooth-scroll" target="_blank">立即下载 </a> </div>
             </div>
           </div>
           <div class="hero-right col-lg-5 offset-lg-1">
